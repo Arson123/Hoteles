@@ -6,21 +6,24 @@
     <img src="assets/images/bg.svg" alt="Background" />
   </div>
   <div class="login-content">
-    <form>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
       <img src="assets/images/avatar.svg" alt="Avatar" />
-      <h2 class="title">Welcome To<br/> Hotelium</h2>
-      <div class="inputs">
-        <mat-form-field class="input-div one">
-          <mat-icon matPrefix class="i">account_circle</mat-icon>
-          <input matInput type="text" placeholder="Username" />
-        </mat-form-field>
-        <mat-form-field class="input-div pass">
-          <mat-icon matPrefix class="i">lock</mat-icon>
-          <input matInput type="password" placeholder="Password" />
-        </mat-form-field>
-      </div>
-      <a href="#">Forgot Password?</a>
-      <button mat-raised-button class="btn" color="primary">Login</button>
+      <h2 class="title">Welcome</h2>
+
+      <mat-form-field class="input-div one">
+        <mat-label>Username</mat-label>
+        <input matInput type="text" formControlName="username" required />
+        <mat-icon matPrefix>account_circle</mat-icon>
+      </mat-form-field>
+
+      <mat-form-field class="input-div pass">
+        <mat-label>Password</mat-label>
+        <input matInput type="password" formControlName="password" required />
+        <mat-icon matPrefix>lock</mat-icon>
+      </mat-form-field>
+
+      <a href="#" (click)="info()">Forgot Password?</a>
+      <button mat-raised-button class="btn" color="primary" type="submit">Login</button>
     </form>
   </div>
 </div>
