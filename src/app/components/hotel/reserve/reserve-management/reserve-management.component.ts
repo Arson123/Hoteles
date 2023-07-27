@@ -14,7 +14,7 @@ import { ReservaListComponent } from '../reserva-list/reserva-list.component'; /
   styleUrls: ['./reserve-management.component.scss'],
 })
 export class ReserveManagementComponent implements OnInit {
-  displayedColumns: string[] = ['name', 'enabled', 'amount', 'reservas', 'actions'];
+  displayedColumns: string[] = ['name', 'enabled', 'amount', 'reservas'];
   dataSource = new MatTableDataSource<Hotel>();
   hotels: Hotel[] = [];
   selectedHotelId: number | any;

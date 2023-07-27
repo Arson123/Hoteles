@@ -50,16 +50,6 @@
     </mat-cell>
   </ng-container>
 
-  <!-- Acciones Column -->
-  <ng-container matColumnDef="actions">
-    <mat-header-cell *matHeaderCellDef>Acciones</mat-header-cell>
-    <mat-cell *matCellDef="let hotel">
-      <button mat-icon-button color="warn" (click)="deleteHotel(hotel)">
-        <mat-icon>delete</mat-icon>
-      </button>
-    </mat-cell>
-  </ng-container>
-
   <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
   <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
 </mat-table>

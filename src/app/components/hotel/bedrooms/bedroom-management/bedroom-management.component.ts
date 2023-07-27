@@ -54,8 +54,6 @@ export class BedroomManagementComponent {
   }
 
   applyFilter(event: any) {
-    console.log(event);
-
     const filterValue = event.target.value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
     if (this.dataSource.paginator) {
