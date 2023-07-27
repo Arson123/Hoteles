@@ -18,6 +18,7 @@ export class CreateBedroomPopupComponent {
   ) {
     this.roomForm = this.formBuilder.group({
       name: ['', Validators.required],
+      cost: ['', Validators.required],
       amountPeople: [null, [Validators.required, Validators.min(1)]],
       enabled: [true, Validators.required],
       reserved: [false, Validators.required]

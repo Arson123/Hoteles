@@ -34,7 +34,12 @@
     <mat-cell *matCellDef="let room">{{ room.enabled ? "Sí" : "No" }}</mat-cell>
   </ng-container>
 
-  <!-- Creado Column -->
+  <!-- Habilitado Column -->
+  <ng-container matColumnDef="cost">
+    <mat-header-cell *matHeaderCellDef>Costo</mat-header-cell>
+    <mat-cell *matCellDef="let room">{{ room.cost }}</mat-cell>
+  </ng-container>
+
   <!-- Reservado Column -->
   <ng-container matColumnDef="reserved">
     <mat-header-cell *matHeaderCellDef>Reserva ahora</mat-header-cell>

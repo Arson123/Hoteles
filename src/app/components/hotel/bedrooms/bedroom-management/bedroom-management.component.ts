@@ -19,6 +19,7 @@ export class BedroomManagementComponent {
   displayedColumns: string[] = [
     'name',
     'enabled',
+    'cost',
     'reserved',
     'amount',
     'actions',

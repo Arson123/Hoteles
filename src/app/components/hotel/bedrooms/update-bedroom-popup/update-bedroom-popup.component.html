@@ -11,6 +11,14 @@
     </mat-form-field>
 
     <mat-form-field appearance="fill">
+      <mat-label>Costo</mat-label>
+      <input matInput formControlName="cost" />
+      <mat-error *ngIf="roomForm.get('cost')?.invalid"
+        >Campo obligatorio</mat-error
+      >
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
       <mat-label>Cantidad personas</mat-label>
       <input type="number" matInput formControlName="amountPeople" />
       <mat-error *ngIf="roomForm.get('amountPeople')?.invalid"
