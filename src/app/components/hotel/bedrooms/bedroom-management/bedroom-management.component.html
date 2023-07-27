@@ -6,7 +6,7 @@
     }}</mat-option>
   </mat-select> </mat-form-field
 >&nbsp;&nbsp;
-<button class="create" mat-raised-button (click)="openCreateRoomDialog()">
+<button *ngIf="showAgentsOptions" class="create" mat-raised-button (click)="openCreateRoomDialog()">
   Crear Habitacion
 </button>
 
@@ -57,7 +57,7 @@
   </ng-container>
 
   <!-- Acciones Column -->
-  <ng-container matColumnDef="actions">
+  <ng-container matColumnDef="actions" *ngIf="showAgentsOptions">
     <mat-header-cell *matHeaderCellDef>Acciones</mat-header-cell>
     <mat-cell *matCellDef="let hotel">
       <button mat-icon-button class="edit" (click)="editHotel(hotel)">
@@ -68,6 +68,12 @@
       </button>
     </mat-cell>
   </ng-container>
+
+  <ng-container matColumnDef="actions" *ngIf="showClientesOptions">
+    <mat-header-cell *matHeaderCellDef>calificacion</mat-header-cell>
+    <mat-cell *matCellDef="let room">{{ room.stars }}/12</mat-cell>
+  </ng-container>
+
 
   <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
   <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>

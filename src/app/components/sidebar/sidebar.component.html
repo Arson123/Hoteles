@@ -1,18 +1,24 @@
 <mat-sidenav-container>
   <mat-sidenav mode="side" [opened]="isOpen">
-    <mat-nav-list *ngIf="showAgentsOptions">
+    <mat-nav-list>
+      <a mat-list-item routerLink="/Home/user/profile" routerLinkActive="active">
+        <mat-icon>person</mat-icon>
+        <span class="text">Perfil</span>
+      </a>
+    </mat-nav-list>
+    <mat-nav-list>
       <a mat-list-item routerLink="/Home/hotel-management/hotel" routerLinkActive="active">
         <mat-icon>home</mat-icon>
         <span class="text">Hoteles</span>
       </a>
     </mat-nav-list>
-    <mat-nav-list *ngIf="showAgentsOptions">
+    <mat-nav-list>
       <a mat-list-item routerLink="/Home/hotel-management/bedroom" routerLinkActive="active">
         <mat-icon>home</mat-icon>
         <span class="text">Habitaciones</span>
       </a>
     </mat-nav-list>
-    <mat-nav-list *ngIf="showAgentsOptions">
+    <mat-nav-list>
       <a mat-list-item routerLink="/Home/hotel-management/reserve" routerLinkActive="active">
         <mat-icon>calendar_today</mat-icon>
         <span class="text">Lista Reservas</span>

@@ -1,4 +1,4 @@
-<button class="create" mat-raised-button (click)="openCreateHotelDialog()">
+<button class="create" *ngIf="showAgentsOptions" mat-raised-button (click)="openCreateHotelDialog()">
   Crear Hotel
 </button>
 <br /><br />
@@ -40,7 +40,7 @@
   </ng-container>
 
   <!-- Acciones Column -->
-  <ng-container matColumnDef="actions">
+  <ng-container matColumnDef="actions" *ngIf="showAgentsOptions">
     <mat-header-cell *matHeaderCellDef>Acciones</mat-header-cell>
     <mat-cell *matCellDef="let hotel">
       <button mat-icon-button class="edit" (click)="editHotel(hotel)">
@@ -48,6 +48,15 @@
       </button>
       <button mat-icon-button color="warn" (click)="deleteHotel(hotel)">
         <mat-icon>delete</mat-icon>
+      </button>
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="actions" *ngIf="showClientesOptions">
+    <mat-header-cell *matHeaderCellDef>Reserva</mat-header-cell>
+    <mat-cell *matCellDef="let hotel">
+      <button mat-icon-button (click)="redirectToOtherRoute()">
+        <mat-icon>remove_red_eye</mat-icon>
       </button>
     </mat-cell>
   </ng-container>

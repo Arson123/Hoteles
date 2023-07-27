@@ -9,6 +9,7 @@ import { BedroomService } from 'src/app/services/bedroom.service';
 import { CreateBedroomPopupComponent } from '../create-bedroom-popup/create-bedroom-popup.component';
 import { UpdateBedroomPopupComponent } from '../update-bedroom-popup/update-bedroom-popup.component';
 import { ReservePopupComponent } from '../reserve-popup/reserve-popup.component';
+import { LoginService } from 'src/app/services/login.service';
 
 @Component({
   selector: 'app-bedroom-management',
@@ -29,14 +30,23 @@ export class BedroomManagementComponent {
   selectedHotelId: number | any;
   selectedBedroomId: number | any;
   selectedHotel: Hotel | null = null;
+  showClientesOptions = false;
+  showAgentsOptions = false;
 
   @ViewChild(MatPaginator, { static: true }) paginator!: MatPaginator;
 
   constructor(
     private hotelService: HotelService,
     private bedRoomService: BedroomService,
+    private loginService: LoginService,
     public dialog: MatDialog
-  ) {}
+  ) {
+    const user = this.loginService.getUserFromSessionStorage();
+    if (user) {
+      this.showClientesOptions = user.client === true;
+      this.showAgentsOptions = user.agent === true;
+    }
+  }
 
   ngOnInit() {
     this.dataSource.paginator = this.paginator;

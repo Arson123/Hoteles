@@ -8,6 +8,7 @@ import { LoginModuleModule } from './components/login/login.module.module';
 import { DashboardModule } from './components/dashboard/dashboard.module';
 import { HotelModule } from './components/hotel/hotel.module';
 import { AuthGuard } from './guards/auth.guard';
+import { UserModule } from './components/user/user.module';
 
 
 @NgModule({
@@ -15,6 +16,7 @@ import { AuthGuard } from './guards/auth.guard';
     AppComponent
   ],
   imports: [
+    UserModule,
     HotelModule,
     DashboardModule,
     LoginModuleModule,

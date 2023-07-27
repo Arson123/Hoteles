@@ -14,6 +14,7 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     children: [
       { path: 'hotel-management', component: HotelManagementComponent },
+      { path: 'user', loadChildren: () => import('./components/user/user.module').then(m => m.UserModule) },
     ],
   },
 ];

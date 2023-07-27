@@ -7,6 +7,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { CreateHotelPopupComponent } from '../create-hotel-popup/create-hotel-popup.component';
 import { UpdateHotelPopupComponent } from '../update-hotel-popup/update-hotel-popup.component';
 import Swal from 'sweetalert2';
+import { LoginService } from 'src/app/services/login.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-hotel-management',
@@ -23,10 +25,23 @@ export class HotelManagementComponent implements OnInit {
   ];
   dataSource = new MatTableDataSource<Hotel>();
   selectedHotel: Hotel | null = null;
+  showClientesOptions = false;
+  showAgentsOptions = false;
 
   @ViewChild(MatPaginator, { static: true }) paginator!: MatPaginator;
 
-  constructor(private hotelService: HotelService, public dialog: MatDialog) {}
+  constructor(
+    private hotelService: HotelService,
+    private loginService: LoginService,
+    public dialog: MatDialog,
+    private router: Router
+  ) {
+    const user = this.loginService.getUserFromSessionStorage();
+    if (user) {
+      this.showClientesOptions = user.client === true;
+      this.showAgentsOptions = user.agent === true;
+    }
+  }
 
   ngOnInit() {
     this.dataSource.paginator = this.paginator;
@@ -129,5 +144,22 @@ export class HotelManagementComponent implements OnInit {
         this.getHotels();
         Swal.fire('Actualizado correctamente', '', 'success');
       });
+  }
+
+  redirectToOtherRoute() {
+    Swal.fire({
+      title: '¿Estás seguro?',
+      text: `Te redireccionasemos a reservas`,
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Continuar',
+      cancelButtonText: 'Cancelar',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.router.navigate(['/Home/hotel-management/bedroom']);
+      }
+    });
   }
 }

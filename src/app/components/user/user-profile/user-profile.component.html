@@ -1,0 +1,18 @@
+<div *ngIf="userProfileData" class="profile-container mat-elevation-z4">
+  <h2>{{ userProfileData.name }}</h2>
+  <img [src]="userProfileData.avatar" alt="Avatar" />
+  <p><strong>Email:</strong> {{ userProfileData.mail }}</p>
+  <p><strong>Género:</strong> {{ userProfileData.gender }}</p>
+  <p><strong>Tipo de documento:</strong> {{ userProfileData.documentType }}</p>
+  <p><strong>Número de documento:</strong> {{ userProfileData.document }}</p>
+  <p>
+    <strong>Fecha de nacimiento:</strong> {{ userProfileData.bornDate | date }}
+  </p>
+  <p><strong>Teléfono:</strong> {{ userProfileData.phone }}</p>
+  <p><strong>Es cliente:</strong> {{ userProfileData.client ? "Sí" : "No" }}</p>
+  <p><strong>Es agente:</strong> {{ userProfileData.agent ? "Sí" : "No" }}</p>
+</div>
+
+<div *ngIf="!userProfileData" class="empty-profile">
+  <p>No se encontraron datos de perfil.</p>
+</div>
