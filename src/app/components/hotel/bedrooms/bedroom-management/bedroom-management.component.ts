@@ -26,6 +26,7 @@ export class BedroomManagementComponent {
   dataSource = new MatTableDataSource<Hotel>();
   hotels: Hotel[] = [];
   selectedHotelId: number | any;
+  selectedBedroomId: number | any;
   selectedHotel: Hotel | null = null;
 
   @ViewChild(MatPaginator, { static: true }) paginator!: MatPaginator;
@@ -161,16 +162,27 @@ export class BedroomManagementComponent {
   }
 
   openReservePopup(room: any) {
-    // Aquí debes abrir el popup de reserva, ya sea creando un componente específico o utilizando MatDialog para abrir un diálogo
-    // Ejemplo con MatDialog:
+    this.selectedBedroomId = room.id;
     const dialogRef = this.dialog.open(ReservePopupComponent, {
       width: '45%',
-      data: room, // Puedes pasar los datos de la habitación seleccionada al popup si es necesario
+      data: room,
     });
-  
+
     dialogRef.afterClosed().subscribe((result: any) => {
-      // Aquí puedes realizar acciones después de que se cierre el popup de reserva, si es necesario
+      if (result) {
+        this.createReserve(result);
+      }
     });
   }
-  
+
+  createReserve(reserve: any) {
+    this.bedRoomService
+      .createReservation(this.selectedHotelId,this.selectedBedroomId, reserve)
+      .subscribe((createdRoom: any) => {
+        this.dataSource.data.push(createdRoom);
+        this.dataSource.data = this.dataSource.data.slice();
+        this.dialog.closeAll();
+        Swal.fire('Creado correctamente', '', 'success');
+      });
+  }
 }

@@ -42,7 +42,6 @@ export class ReservePopupComponent implements OnInit {
     });
   }
 
-  // Función para realizar la reserva
   reserveRoom() {
     const selectedUserId = this.reserveForm.get('selectedUser')?.value;
     const selectedUser = this.userList.find(
@@ -52,7 +51,7 @@ export class ReservePopupComponent implements OnInit {
       this.reserveForm.get('selectedUserName')?.setValue(selectedUser.name);
     }
     if (this.reserveForm.valid) {
-      const selectedUserId = this.reserveForm.value.selectedUser;
+      this.dialogRef.close(this.reserveForm.value);
     } else {
       Swal.fire(
         'Formulario inválido',
@@ -62,7 +61,6 @@ export class ReservePopupComponent implements OnInit {
     }
   }
 
-  // Función para cerrar el diálogo
   closeDialog() {
     this.dialogRef.close();
   }
