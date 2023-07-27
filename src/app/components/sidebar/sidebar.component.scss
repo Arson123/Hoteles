@@ -1,0 +1,53 @@
+$colorBase: #38d39f;
+$colorMasOscuro: shade($colorBase, 20%);
+
+mat-sidenav-container {
+  height: 100vh;
+}
+
+mat-sidenav {
+  width: 250px;
+  color: #fff;  
+  background: $colorBase;
+}
+
+mat-nav-list a {
+  color: #fff;  
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px 20px;
+  transition: background-color 0.3s;
+}
+
+mat-nav-list a.active {
+  background-color: $colorMasOscuro;
+  color: #fff; 
+}
+
+mat-nav-list a:hover {
+  background-color: $colorMasOscuro;
+}
+
+mat-toolbar .menu-icon {
+  margin-left: 20px;
+  cursor: pointer;
+  color: #fff;
+}
+
+mat-toolbar .menu-icon:hover {
+  color: #fff;
+  color: $colorMasOscuro;
+}
+
+/* Estilos para el ícono del menú */
+mat-icon {
+  color: #fff;
+  margin-right: 10px;
+  font-size: 28px;
+}
+
+.text{
+  color: #fff;
+}

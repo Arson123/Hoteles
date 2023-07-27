@@ -1,0 +1,23 @@
+<h1 mat-dialog-title>Crear Hotel</h1>
+<div mat-dialog-content>
+  <form [formGroup]="hotelForm">
+    <mat-form-field appearance="fill">
+      <mat-label>Nombre del Hotel</mat-label>
+      <input matInput formControlName="name" />
+      <mat-error *ngIf="hotelForm.get('name')?.invalid">Campo obligatorio</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Habilitado</mat-label>
+      <mat-select formControlName="enabled">
+        <mat-option [value]="true">Sí</mat-option>
+        <mat-option [value]="false">No</mat-option>
+      </mat-select>
+      <mat-error *ngIf="hotelForm.get('enabled')?.invalid">Campo obligatorio</mat-error>
+    </mat-form-field>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-raised-button color="primary" (click)="createHotel()">Crear</button>
+  <button mat-raised-button color="warn" (click)="cancel()">Cancelar</button>
+</div>

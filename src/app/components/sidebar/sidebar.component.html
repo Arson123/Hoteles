@@ -1,0 +1,13 @@
+<mat-sidenav-container>
+  <mat-sidenav mode="side" [opened]="isOpen">
+    <mat-nav-list>
+      <a mat-list-item routerLink="/Home/hotel-management" routerLinkActive="active">
+        <mat-icon>home</mat-icon>
+        <span class="text">Hoteles</span>
+      </a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
