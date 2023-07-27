@@ -13,6 +13,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './dashboard.component';
 import { AppBarComponent } from '../app-bar/app-bar.component';
 import { SidebarComponent } from '../sidebar/sidebar.component';
+import { AuthGuard } from 'src/app/guards/auth.guard';
 
 const routes: Routes = [
   {
@@ -45,6 +46,7 @@ const routes: Routes = [
     CommonModule,
     RouterModule.forRoot(routes),
   ],
+  providers: [AuthGuard],
   exports: [RouterModule],
 })
 export class DashboardModule {}

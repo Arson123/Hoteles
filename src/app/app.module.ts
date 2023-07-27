@@ -7,6 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginModuleModule } from './components/login/login.module.module';
 import { DashboardModule } from './components/dashboard/dashboard.module';
 import { HotelModule } from './components/hotel/hotel.module';
+import { AuthGuard } from './guards/auth.guard';
 
 
 @NgModule({
@@ -21,7 +22,7 @@ import { HotelModule } from './components/hotel/hotel.module';
     AppRoutingModule,
     BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

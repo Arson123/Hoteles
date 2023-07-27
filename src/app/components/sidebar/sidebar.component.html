@@ -9,5 +9,10 @@
   </mat-sidenav>
   <mat-sidenav-content>
     <router-outlet></router-outlet>
+    <div class="empty-content" *ngIf="!isOpen">
+      <mat-icon class="info-icon">info_outline</mat-icon>
+      <span class="empty-text">Selecciona una opcion del sidebar</span>
+    </div>
   </mat-sidenav-content>
+  
 </mat-sidenav-container>

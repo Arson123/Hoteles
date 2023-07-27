@@ -7,12 +7,12 @@ mat-sidenav-container {
 
 mat-sidenav {
   width: 250px;
-  color: #fff;  
+  color: #fff;
   background: $colorBase;
 }
 
 mat-nav-list a {
-  color: #fff;  
+  color: #fff;
   text-decoration: none;
   display: flex;
   align-items: center;
@@ -23,7 +23,7 @@ mat-nav-list a {
 
 mat-nav-list a.active {
   background-color: $colorMasOscuro;
-  color: #fff; 
+  color: #fff;
 }
 
 mat-nav-list a:hover {
@@ -48,6 +48,29 @@ mat-icon {
   font-size: 28px;
 }
 
-.text{
+.text {
   color: #fff;
+}
+
+/* Estilos para el contenido vacío */
+.empty-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 88%;
+}
+
+/* Estilos para el ícono de información */
+.info-icon {
+  width: 4rem;
+  height: 4rem;
+  font-size: 64px;
+  color: #ccc;
+  margin-bottom: 16px;
+}
+
+/* Estilos para el texto */
+.empty-text {
+  margin-top: 16px;
 }

@@ -22,6 +22,9 @@
         <mat-icon matPrefix>lock</mat-icon>
       </mat-form-field>
 
+      <!-- Mostrar el mensaje de error si showError es true -->
+      <div *ngIf="showError" class="error-message">Usuario o contraseña incorrectos</div>
+
       <a href="#" (click)="info()">Forgot Password?</a>
       <button mat-raised-button class="btn" color="primary" type="submit">Login</button>
     </form>
