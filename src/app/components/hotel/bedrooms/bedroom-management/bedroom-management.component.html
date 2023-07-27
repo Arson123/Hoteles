@@ -4,8 +4,8 @@
     <mat-option *ngFor="let hotel of hotels" [value]="hotel.id">{{
       hotel.name
     }}</mat-option>
-  </mat-select>
-</mat-form-field>&nbsp;&nbsp;
+  </mat-select> </mat-form-field
+>&nbsp;&nbsp;
 <button class="create" mat-raised-button (click)="openCreateRoomDialog()">
   Crear Habitacion
 </button>
@@ -31,17 +31,18 @@
   <!-- Habilitado Column -->
   <ng-container matColumnDef="enabled">
     <mat-header-cell *matHeaderCellDef>Habilitado</mat-header-cell>
-    <mat-cell *matCellDef="let room">{{
-      room.enabled ? "Sí" : "No"
-    }}</mat-cell>
+    <mat-cell *matCellDef="let room">{{ room.enabled ? "Sí" : "No" }}</mat-cell>
   </ng-container>
 
   <!-- Creado Column -->
+  <!-- Reservado Column -->
   <ng-container matColumnDef="reserved">
-    <mat-header-cell *matHeaderCellDef>Reservado</mat-header-cell>
-    <mat-cell *matCellDef="let room">{{
-      room.reserved ? "Sí" : "No"
-    }}</mat-cell>
+    <mat-header-cell *matHeaderCellDef>Reservar</mat-header-cell>
+    <mat-cell *matCellDef="let room">
+      <button mat-icon-button class="reserve" (click)="openReservePopup(room)">
+        <mat-icon>event_available</mat-icon>
+      </button>
+    </mat-cell>
   </ng-container>
 
   <!-- cantidad personas Column -->

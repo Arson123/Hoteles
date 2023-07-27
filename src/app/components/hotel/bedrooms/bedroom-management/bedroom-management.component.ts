@@ -8,6 +8,7 @@ import Swal from 'sweetalert2';
 import { BedroomService } from 'src/app/services/bedroom.service';
 import { CreateBedroomPopupComponent } from '../create-bedroom-popup/create-bedroom-popup.component';
 import { UpdateBedroomPopupComponent } from '../update-bedroom-popup/update-bedroom-popup.component';
+import { ReservePopupComponent } from '../reserve-popup/reserve-popup.component';
 
 @Component({
   selector: 'app-bedroom-management',
@@ -158,4 +159,18 @@ export class BedroomManagementComponent {
         Swal.fire('Actualizado correctamente', '', 'success');
       });
   }
+
+  openReservePopup(room: any) {
+    // Aquí debes abrir el popup de reserva, ya sea creando un componente específico o utilizando MatDialog para abrir un diálogo
+    // Ejemplo con MatDialog:
+    const dialogRef = this.dialog.open(ReservePopupComponent, {
+      width: '45%',
+      data: room, // Puedes pasar los datos de la habitación seleccionada al popup si es necesario
+    });
+  
+    dialogRef.afterClosed().subscribe((result: any) => {
+      // Aquí puedes realizar acciones después de que se cierre el popup de reserva, si es necesario
+    });
+  }
+  
 }

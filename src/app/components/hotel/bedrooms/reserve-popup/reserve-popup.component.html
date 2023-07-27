@@ -1,0 +1,49 @@
+<h1 mat-dialog-title class="popup-title">Reservar Habitación</h1>
+<mat-dialog-content>
+  <!-- Mostrar información sobre la habitación seleccionada -->
+  <p><strong>Nombre de la habitación:</strong> {{ room.name }}</p>
+  <p><strong>Habilitado:</strong> {{ room.enabled ? "Sí" : "No" }}</p>
+  <p><strong>Cantidad de personas:</strong> {{ room.amountPeople }}</p>
+
+  <!-- Formulario para seleccionar usuario y fecha de reserva -->
+  <form [formGroup]="reserveForm" (ngSubmit)="reserveRoom()">
+    <mat-form-field appearance="fill">
+      <mat-label>Usuario</mat-label>
+      <mat-select formControlName="selectedUser" required>
+        <mat-option *ngFor="let user of userList" [value]="user.id">
+          {{ user.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <input type="hidden" formControlName="selectedUserName" />
+    <mat-form-field appearance="fill">
+      <mat-label>Fecha de reserva</mat-label>
+      <input
+        matInput
+        [matDatepicker]="datePicker"
+        formControlName="fechaReserva"
+        required
+      />
+      <mat-datepicker-toggle
+        matSuffix
+        [for]="datePicker"
+      ></mat-datepicker-toggle>
+      <mat-datepicker #datePicker></mat-datepicker>
+    </mat-form-field>
+
+    <!-- Botones de acción -->
+    <mat-dialog-actions class="buttons">
+      <button
+        mat-raised-button
+        class="dialog-create"
+        type="submit"
+        [disabled]="reserveForm.invalid"
+      >
+        Reservar
+      </button>
+      <button mat-raised-button color="warn" (click)="closeDialog()">
+        Cancelar
+      </button>
+    </mat-dialog-actions>
+  </form>
+</mat-dialog-content>
