@@ -63,7 +63,7 @@ export class BedroomManagementComponent {
 
   getHotels() {
     this.hotelService.getAllHotels().subscribe((hotels: Hotel[]) => {
-      this.hotels = hotels;
+      this.hotels = hotels.filter((hotel) => hotel.enabled === true);
     });
   }
 
@@ -172,21 +172,25 @@ export class BedroomManagementComponent {
 
   openReservePopup(room: any) {
     this.selectedBedroomId = room.id;
-    const dialogRef = this.dialog.open(ReservePopupComponent, {
-      width: '45%',
-      data: room,
-    });
+    if (room.enabled) {
+      const dialogRef = this.dialog.open(ReservePopupComponent, {
+        width: '45%',
+        data: room,
+      });
 
-    dialogRef.afterClosed().subscribe((result: any) => {
-      if (result) {
-        this.createReserve(result);
-      }
-    });
+      dialogRef.afterClosed().subscribe((result: any) => {
+        if (result) {
+          this.createReserve(result);
+        }
+      });
+    } else {
+      Swal.fire('La habitacion no esta habilitada', '', 'error');
+    }
   }
 
   createReserve(reserve: any) {
     this.bedRoomService
-      .createReservation(this.selectedHotelId,this.selectedBedroomId, reserve)
+      .createReservation(this.selectedHotelId, this.selectedBedroomId, reserve)
       .subscribe((createdRoom: any) => {
         this.dialog.closeAll();
         Swal.fire('Creado correctamente', '', 'success');
