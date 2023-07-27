@@ -1,0 +1,23 @@
+:host {
+  display: block;
+  margin: 0 auto;
+  margin-top: 5%;
+  width: 80%;
+}
+
+mat-table {
+  width: 100%;
+}
+
+.create {
+  background: #38d39f !important;
+  color: white !important;
+}
+
+.edit {
+  color: #38d39f !important;
+}
+
+.search {
+  width: 100%;
+}

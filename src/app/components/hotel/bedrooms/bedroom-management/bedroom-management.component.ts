@@ -179,8 +179,6 @@ export class BedroomManagementComponent {
     this.bedRoomService
       .createReservation(this.selectedHotelId,this.selectedBedroomId, reserve)
       .subscribe((createdRoom: any) => {
-        this.dataSource.data.push(createdRoom);
-        this.dataSource.data = this.dataSource.data.slice();
         this.dialog.closeAll();
         Swal.fire('Creado correctamente', '', 'success');
       });

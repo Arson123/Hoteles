@@ -21,10 +21,13 @@ import { BedroomManagementComponent } from './bedrooms/bedroom-management/bedroo
 import { CreateBedroomPopupComponent } from './bedrooms/create-bedroom-popup/create-bedroom-popup.component';
 import { UpdateBedroomPopupComponent } from './bedrooms/update-bedroom-popup/update-bedroom-popup.component';
 import { ReservePopupComponent } from './bedrooms/reserve-popup/reserve-popup.component';
+import { ReserveManagementComponent } from './reserve/reserve-management/reserve-management.component';
+import { ReservaListComponent } from './reserve/reserva-list/reserva-list.component';
 
 const hotelRoutes: Routes = [
   { path: 'hotel', component: HotelManagementComponent },
   { path: 'bedroom', component: BedroomManagementComponent },
+  { path: 'reserve', component: ReserveManagementComponent },
 ];
 
 @NgModule({
@@ -36,6 +39,8 @@ const hotelRoutes: Routes = [
     CreateBedroomPopupComponent,
     UpdateBedroomPopupComponent,
     ReservePopupComponent,
+    ReserveManagementComponent,
+    ReservaListComponent,
   ],
   imports: [
     CommonModule,

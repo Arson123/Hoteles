@@ -12,6 +12,12 @@
         <span class="text">Habitaciones</span>
       </a>
     </mat-nav-list>
+    <mat-nav-list *ngIf="showAgentsOptions">
+      <a mat-list-item routerLink="/Home/hotel-management/reserve" routerLinkActive="active">
+        <mat-icon>calendar_today</mat-icon>
+        <span class="text">Lista Reservas</span>
+      </a>
+    </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
     <router-outlet></router-outlet>

@@ -4,11 +4,8 @@
     <mat-option *ngFor="let hotel of hotels" [value]="hotel.id">{{
       hotel.name
     }}</mat-option>
-  </mat-select> </mat-form-field
->&nbsp;&nbsp;
-<button class="create" mat-raised-button (click)="openCreateRoomDialog()">
-  Crear Habitacion
-</button>
+  </mat-select>
+</mat-form-field>
 
 <br /><br />
 
@@ -34,30 +31,31 @@
     <mat-cell *matCellDef="let room">{{ room.enabled ? "Sí" : "No" }}</mat-cell>
   </ng-container>
 
-  <!-- Creado Column -->
-  <!-- Reservado Column -->
-  <ng-container matColumnDef="reserved">
-    <mat-header-cell *matHeaderCellDef>Reserva ahora</mat-header-cell>
-    <mat-cell *matCellDef="let room">
-      <button mat-icon-button class="reserve" (click)="openReservePopup(room)">
-        <mat-icon>event_available</mat-icon>
-      </button>
-    </mat-cell>
-  </ng-container>
-
   <!-- cantidad personas Column -->
   <ng-container matColumnDef="amount">
     <mat-header-cell *matHeaderCellDef>Cantidad de personas</mat-header-cell>
     <mat-cell *matCellDef="let room">{{ room.amountPeople }}</mat-cell>
   </ng-container>
 
+  <!-- Reservas Column -->
+  <ng-container matColumnDef="reservas">
+    <mat-header-cell *matHeaderCellDef>Reservas hechas</mat-header-cell>
+    <mat-cell *matCellDef="let room">
+      <ng-container
+        *ngIf="room.reserved && room.reserved.length > 0; else noReservas"
+      >
+        <button mat-icon-button color="primary" (click)="showReservas(room)">
+          <mat-icon>event</mat-icon>
+        </button>
+      </ng-container>
+      <ng-template #noReservas> No tiene reservas </ng-template>
+    </mat-cell>
+  </ng-container>
+
   <!-- Acciones Column -->
   <ng-container matColumnDef="actions">
     <mat-header-cell *matHeaderCellDef>Acciones</mat-header-cell>
     <mat-cell *matCellDef="let hotel">
-      <button mat-icon-button class="edit" (click)="editHotel(hotel)">
-        <mat-icon>edit</mat-icon>
-      </button>
       <button mat-icon-button color="warn" (click)="deleteHotel(hotel)">
         <mat-icon>delete</mat-icon>
       </button>

@@ -1,0 +1,18 @@
+<ng-container *ngIf="reservas && reservas.length > 0; else noReservas">
+  <h2>Reservas de la habitación "{{ roomName }}"</h2>
+  <ul>
+    <li *ngFor="let reserva of reservas">
+      {{ reserva.userName }} - {{ reserva.fechaReserva | date : "medium" }}
+      <button
+        mat-icon-button
+        color="warn"
+        (click)="eliminarReserva(reserva.id)"
+      >
+        <mat-icon>delete</mat-icon>
+      </button>
+    </li>
+  </ul>
+</ng-container>
+<ng-template #noReservas>
+  <p>No hay reservas para la habitación "{{ roomName }}"</p>
+</ng-template>
