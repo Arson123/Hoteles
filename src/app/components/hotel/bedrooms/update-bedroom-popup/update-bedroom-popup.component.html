@@ -1,0 +1,40 @@
+<h2 mat-dialog-title>Actualizar Habitacion</h2>
+<mat-dialog-content>
+  <form [formGroup]="roomForm">
+    <mat-form-field appearance="fill">
+      <mat-label>Cantidad personas</mat-label>
+      <input type="number" matInput formControlName="amountPeople" />
+      <mat-error *ngIf="roomForm.get('name')?.invalid"
+        >Campo obligatorio</mat-error
+      >
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Habilitado</mat-label>
+      <mat-select formControlName="enabled">
+        <mat-option [value]="true">Sí</mat-option>
+        <mat-option [value]="false">No</mat-option>
+      </mat-select>
+      <mat-error *ngIf="roomForm.get('enabled')?.invalid"
+        >Campo obligatorio</mat-error
+      >
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Reservado</mat-label>
+        <mat-select formControlName="reserved">
+          <mat-option [value]="true">Sí</mat-option>
+          <mat-option [value]="false">No</mat-option>
+        </mat-select>
+        <mat-error *ngIf="roomForm.get('reserved')?.invalid"
+          >Campo obligatorio</mat-error
+        >
+      </mat-form-field>
+  </form>
+  <mat-dialog-actions>
+    <button mat-raised-button color="warn" (click)="cancel()">Cancelar</button>
+    <button mat-raised-button class="dialog-create" (click)="updateRoom()">
+      Actualizar Hotel
+    </button>
+  </mat-dialog-actions>
+</mat-dialog-content>

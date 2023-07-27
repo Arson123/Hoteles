@@ -7,21 +7,32 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { HttpClientModule } from '@angular/common/http';
-import { MatSelectModule } from '@angular/material/select'; 
+import { MatSelectModule } from '@angular/material/select';
 import { ReactiveFormsModule } from '@angular/forms';
-import { FormsModule } from '@angular/forms'; 
+import { FormsModule } from '@angular/forms';
 import { MatDialogModule } from '@angular/material/dialog';
 import { HotelManagementComponent } from './hotel-management/hotel-management.component';
 import { HotelService } from 'src/app/services/hotel.service';
 import { CreateHotelPopupComponent } from './create-hotel-popup/create-hotel-popup.component';
 import { UpdateHotelPopupComponent } from './update-hotel-popup/update-hotel-popup.component';
+import { BedroomManagementComponent } from './bedrooms/bedroom-management/bedroom-management.component';
+import { CreateBedroomPopupComponent } from './bedrooms/create-bedroom-popup/create-bedroom-popup.component';
+import { UpdateBedroomPopupComponent } from './bedrooms/update-bedroom-popup/update-bedroom-popup.component';
 
 const hotelRoutes: Routes = [
   { path: '', component: HotelManagementComponent },
+  { path: 'bedroom', component: BedroomManagementComponent },
 ];
 
 @NgModule({
-  declarations: [HotelManagementComponent, CreateHotelPopupComponent, UpdateHotelPopupComponent],
+  declarations: [
+    HotelManagementComponent,
+    CreateHotelPopupComponent,
+    UpdateHotelPopupComponent,
+    BedroomManagementComponent,
+    CreateBedroomPopupComponent,
+    UpdateBedroomPopupComponent,
+  ],
   imports: [
     CommonModule,
     RouterModule.forChild(hotelRoutes),
@@ -34,7 +45,7 @@ const hotelRoutes: Routes = [
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    MatDialogModule
+    MatDialogModule,
   ],
   providers: [HotelService],
 })

@@ -23,9 +23,7 @@ const routes: Routes = [
       {
         path: 'hotel-management',
         loadChildren: () =>
-          import('../hotel/hotel.module').then(
-            (m) => m.HotelModule
-          ),
+          import('../hotel/hotel.module').then((m) => m.HotelModule),
       },
       // Agrega otras rutas secundarias para los demás componentes del sidebar
     ],

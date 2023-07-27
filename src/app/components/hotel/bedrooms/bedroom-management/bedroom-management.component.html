@@ -1,0 +1,71 @@
+<mat-form-field appearance="fill">
+  <mat-label>Seleccionar hotel</mat-label>
+  <mat-select [(value)]="selectedHotelId" (valueChange)="getBedrooms()">
+    <mat-option *ngFor="let hotel of hotels" [value]="hotel.id">{{
+      hotel.name
+    }}</mat-option>
+  </mat-select>
+</mat-form-field>&nbsp;&nbsp;
+<button class="create" mat-raised-button (click)="openCreateRoomDialog()">
+  Crear Habitacion
+</button>
+
+<br /><br />
+
+<mat-form-field class="search" appearance="fill">
+  <mat-label>Buscar Habitacion</mat-label>
+  <input
+    matInput
+    (keyup)="applyFilter($event)"
+    placeholder="Filtrar por habitacion"
+  />
+</mat-form-field>
+
+<mat-table [dataSource]="dataSource">
+  <!-- Habitacion Column -->
+  <ng-container matColumnDef="ability">
+    <mat-header-cell *matHeaderCellDef>Cantidad de personas</mat-header-cell>
+    <mat-cell *matCellDef="let room">{{ room.ability }}</mat-cell>
+  </ng-container>
+
+  <!-- Habilitado Column -->
+  <ng-container matColumnDef="enabled">
+    <mat-header-cell *matHeaderCellDef>Habilitado</mat-header-cell>
+    <mat-cell *matCellDef="let room">{{
+      room.enabled ? "Sí" : "No"
+    }}</mat-cell>
+  </ng-container>
+
+  <!-- Creado Column -->
+  <ng-container matColumnDef="reserved">
+    <mat-header-cell *matHeaderCellDef>Reservado</mat-header-cell>
+    <mat-cell *matCellDef="let room">{{ room.reserved }}</mat-cell>
+  </ng-container>
+
+  <!-- cantidad personas Column -->
+  <ng-container matColumnDef="amount">
+    <mat-header-cell *matHeaderCellDef>Cantidad de personas</mat-header-cell>
+    <mat-cell *matCellDef="let room">{{ room.amountPeople }}</mat-cell>
+  </ng-container>
+
+  <!-- Acciones Column -->
+  <ng-container matColumnDef="actions">
+    <mat-header-cell *matHeaderCellDef>Acciones</mat-header-cell>
+    <mat-cell *matCellDef="let hotel">
+      <button mat-icon-button class="edit" (click)="editHotel(hotel)">
+        <mat-icon>edit</mat-icon>
+      </button>
+      <button mat-icon-button color="warn" (click)="deleteHotel(hotel)">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+</mat-table>
+
+<mat-paginator
+  [pageSizeOptions]="[5, 10, 25]"
+  showFirstLastButtons
+></mat-paginator>
