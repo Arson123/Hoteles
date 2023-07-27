@@ -41,9 +41,7 @@
   <ng-container matColumnDef="reservas">
     <mat-header-cell *matHeaderCellDef>Reservas hechas</mat-header-cell>
     <mat-cell *matCellDef="let room">
-      <ng-container
-        *ngIf="room.reserved && room.reserved.length > 0; else noReservas"
-      >
+      <ng-container *ngIf="room.reserved && room.reserved.length > 0; else noReservas">
         <button mat-icon-button color="primary" (click)="showReservas(room)">
           <mat-icon>event</mat-icon>
         </button>

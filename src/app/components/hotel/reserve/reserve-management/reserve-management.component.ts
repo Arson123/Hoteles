@@ -6,13 +6,14 @@ import { Hotel } from 'src/app/models/hotel.model';
 import { MatDialog } from '@angular/material/dialog';
 import Swal from 'sweetalert2';
 import { BedroomService } from 'src/app/services/bedroom.service';
+import { ReservaListComponent } from '../reserva-list/reserva-list.component'; // Importar el componente ReservaListComponent
 
 @Component({
   selector: 'app-reserve-management',
   templateUrl: './reserve-management.component.html',
   styleUrls: ['./reserve-management.component.scss'],
 })
-export class ReserveManagementComponent {
+export class ReserveManagementComponent implements OnInit {
   displayedColumns: string[] = ['name', 'enabled', 'amount', 'reservas', 'actions'];
   dataSource = new MatTableDataSource<Hotel>();
   hotels: Hotel[] = [];
@@ -79,29 +80,15 @@ export class ReserveManagementComponent {
   }
 
   showReservas(room: any) {
-    const reservasHtml = this.generateReservasHtml(room.reserved);
-    Swal.fire({
-      title: 'Reservas de la habitación',
-      html: reservasHtml,
-      icon: 'info',
-      showCloseButton: true,
-      showConfirmButton: false,
+    // Abrir el popup ReservaListComponent y pasarle las reservas y el nombre de la habitación
+    this.dialog.open(ReservaListComponent, {
+      data: {
+        reservas: room.reserved,
+        roomName: room.name,
+        hotelId: this.selectedHotelId,
+        roomId: room.id,
+      },
+      width: '50%', // Ajustar el ancho del popup según sea necesario
     });
-  }
-
-  generateReservasHtml(reservas: any[]) {
-    let html = '';
-    if (reservas && reservas.length > 0) {
-      html += '<ul>';
-      reservas.forEach((reserva) => {
-        html += `<li><strong>Fecha de reserva:</strong> ${reserva.fechaReserva}</li>`;
-        html += `<li><strong>Usuario:</strong> ${reserva.userName}</li>`;
-        html += '<br>';
-      });
-      html += '</ul>';
-    } else {
-      html += '<p>No hay reservas para esta habitación.</p>';
-    }
-    return html;
   }
 }

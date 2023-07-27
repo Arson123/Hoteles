@@ -1,18 +1,29 @@
-<ng-container *ngIf="reservas && reservas.length > 0; else noReservas">
-  <h2>Reservas de la habitación "{{ roomName }}"</h2>
-  <ul>
-    <li *ngFor="let reserva of reservas">
-      {{ reserva.userName }} - {{ reserva.fechaReserva | date : "medium" }}
-      <button
-        mat-icon-button
-        color="warn"
-        (click)="eliminarReserva(reserva.id)"
-      >
-        <mat-icon>delete</mat-icon>
-      </button>
-    </li>
-  </ul>
-</ng-container>
-<ng-template #noReservas>
-  <p>No hay reservas para la habitación "{{ roomName }}"</p>
-</ng-template>
+<div class="dialog-container">
+  <button class="close-button" mat-icon-button (click)="dialogRef.close()">
+    <mat-icon>close</mat-icon>
+  </button>
+  <mat-dialog-content>
+    <h2>Reservas de la habitación "{{ roomName }}"</h2>
+    <ng-container *ngIf="reservas && reservas.length > 0; else noReservas">
+      <ul>
+        <li *ngFor="let reserva of reservas" class="reserva-item">
+          <div class="reserva-info">
+            <span class="bold-dot">•</span>
+            <span class="user-name">{{ reserva.userName }}</span>
+            <span class="fecha-reserva">{{
+              reserva.fechaReserva | date : "medium"
+            }}</span>
+          </div>
+          <button class="delete-button" (click)="eliminarReserva(reserva.id)">
+            <mat-icon class="delete-icon">delete</mat-icon>
+          </button>
+        </li>
+      </ul>
+    </ng-container>
+    <ng-template #noReservas>
+      <p class="no-reservas">
+        No hay reservas para la habitación "{{ roomName }}"
+      </p>
+    </ng-template>
+  </mat-dialog-content>
+</div>
