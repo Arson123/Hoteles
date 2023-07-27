@@ -1,0 +1,23 @@
+<h2 mat-dialog-title>Actualizar Hotel</h2>
+<mat-dialog-content>
+  <form [formGroup]="hotelForm">
+    <mat-form-field appearance="fill">
+      <mat-label>Nombre del Hotel</mat-label>
+      <input matInput formControlName="name" required />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Habilitado</mat-label>
+      <mat-select formControlName="enabled" required>
+        <mat-option value="true">Sí</mat-option>
+        <mat-option value="false">No</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <!-- More fields can be added here for updating hotel information -->
+  </form>
+  <mat-dialog-actions>
+    <button mat-raised-button color="warn" (click)="cancel()">Cancelar</button>
+    <button mat-raised-button class="dialog-create" (click)="updateHotel()">Actualizar Hotel</button>
+  </mat-dialog-actions>
+</mat-dialog-content>

@@ -14,13 +14,14 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { HotelManagementComponent } from './hotel-management/hotel-management.component';
 import { HotelService } from 'src/app/services/hotel.service';
 import { CreateHotelPopupComponent } from './create-hotel-popup/create-hotel-popup.component';
+import { UpdateHotelPopupComponent } from './update-hotel-popup/update-hotel-popup.component';
 
 const hotelRoutes: Routes = [
   { path: '', component: HotelManagementComponent },
 ];
 
 @NgModule({
-  declarations: [HotelManagementComponent, CreateHotelPopupComponent],
+  declarations: [HotelManagementComponent, CreateHotelPopupComponent, UpdateHotelPopupComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(hotelRoutes),

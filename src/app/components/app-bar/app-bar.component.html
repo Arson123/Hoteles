@@ -1,8 +1,11 @@
-<!-- app-bar.component.html -->
 <mat-toolbar class="appbar">
   <button mat-icon-button (click)="toggleSidebar()">
     <mat-icon>menu</mat-icon>
   </button>
   <!-- Aquí puedes agregar el contenido de la barra de navegación, como el logo, botones, etc. -->
   <span>HOTELIUM</span>
+  <span class="spacer"></span> <!-- Esto añade un espacio entre los elementos izquierdo y derecho -->
+  <button mat-icon-button color="warn" (click)="logout()">
+    <mat-icon>exit_to_app</mat-icon>
+  </button>
 </mat-toolbar>
