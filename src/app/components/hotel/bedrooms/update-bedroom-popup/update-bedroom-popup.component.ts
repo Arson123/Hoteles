@@ -19,13 +19,6 @@ export class UpdateBedroomPopupComponent {
     this.roomForm = this.formBuilder.group({
       id: [data.id, Validators.required],
       name: [data.name, Validators.required],
-      enabled: [data.enabled, Validators.required],
-      createdAt: [data.createdAt, Validators.required],
-      bedrooms: [data.bedrooms],
-    });
-    this.roomForm = this.formBuilder.group({
-      id: [data.id, Validators.required],
-      ability: [data.ability, Validators.required],
       amountPeople: [data.amountPeople, [Validators.required, Validators.min(1)]],
       enabled: [data.enabled, Validators.required],
       reserved: [data.reserved, Validators.required]

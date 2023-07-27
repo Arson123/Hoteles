@@ -20,7 +20,7 @@ import { CreateBedroomPopupComponent } from './bedrooms/create-bedroom-popup/cre
 import { UpdateBedroomPopupComponent } from './bedrooms/update-bedroom-popup/update-bedroom-popup.component';
 
 const hotelRoutes: Routes = [
-  { path: '', component: HotelManagementComponent },
+  { path: 'hotel', component: HotelManagementComponent },
   { path: 'bedroom', component: BedroomManagementComponent },
 ];
 

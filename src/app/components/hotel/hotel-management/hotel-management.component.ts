@@ -8,14 +8,19 @@ import { CreateHotelPopupComponent } from '../create-hotel-popup/create-hotel-po
 import { UpdateHotelPopupComponent } from '../update-hotel-popup/update-hotel-popup.component';
 import Swal from 'sweetalert2';
 
-
 @Component({
   selector: 'app-hotel-management',
   templateUrl: './hotel-management.component.html',
   styleUrls: ['./hotel-management.component.scss'],
 })
 export class HotelManagementComponent implements OnInit {
-  displayedColumns: string[] = ['name', 'enabled', 'createdAt', 'actions'];
+  displayedColumns: string[] = [
+    'name',
+    'ubication',
+    'enabled',
+    'createdAt',
+    'actions',
+  ];
   dataSource = new MatTableDataSource<Hotel>();
   selectedHotel: Hotel | null = null;
 
@@ -72,6 +77,8 @@ export class HotelManagementComponent implements OnInit {
       this.dataSource.data.push(createdHotel);
       this.dataSource.data = this.dataSource.data.slice();
       this.dialog.closeAll();
+
+      Swal.fire('Creado correctamente', '', 'success');
     });
   }
 
@@ -102,9 +109,7 @@ export class HotelManagementComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((result: any) => {
       if (result) {
-        if (result.name && result.enabled) {
-          this.updateHotel(result);
-        }
+        this.updateHotel(result);
       }
     });
   }
@@ -121,6 +126,8 @@ export class HotelManagementComponent implements OnInit {
           this.dataSource.data[index] = updatedHotel;
           this.dataSource.data = this.dataSource.data.slice();
         }
+        this.getHotels();
+        Swal.fire('Actualizado correctamente', '', 'success');
       });
   }
 }

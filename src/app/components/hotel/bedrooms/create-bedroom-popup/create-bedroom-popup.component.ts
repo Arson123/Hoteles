@@ -17,6 +17,7 @@ export class CreateBedroomPopupComponent {
     @Inject(MAT_DIALOG_DATA) public data: Hotel
   ) {
     this.roomForm = this.formBuilder.group({
+      name: ['', Validators.required],
       amountPeople: [null, [Validators.required, Validators.min(1)]],
       enabled: [true, Validators.required],
       reserved: [false, Validators.required]
@@ -33,7 +34,7 @@ export class CreateBedroomPopupComponent {
     if (this.roomForm.valid) {
       const newRoom: any = this.roomForm.value;
       this.dialogRef.close(newRoom);
-    } else {
+    } else {      
       console.log('Invalid form');
     }
   }

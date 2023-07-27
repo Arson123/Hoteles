@@ -1,9 +1,15 @@
 <mat-sidenav-container>
   <mat-sidenav mode="side" [opened]="isOpen">
     <mat-nav-list *ngIf="showAgentsOptions">
-      <a mat-list-item routerLink="/Home/hotel-management" routerLinkActive="active">
+      <a mat-list-item routerLink="/Home/hotel-management/hotel" routerLinkActive="active">
         <mat-icon>home</mat-icon>
         <span class="text">Hoteles</span>
+      </a>
+    </mat-nav-list>
+    <mat-nav-list *ngIf="showAgentsOptions">
+      <a mat-list-item routerLink="/Home/hotel-management/bedroom" routerLinkActive="active">
+        <mat-icon>home</mat-icon>
+        <span class="text">Habitaciones</span>
       </a>
     </mat-nav-list>
   </mat-sidenav>

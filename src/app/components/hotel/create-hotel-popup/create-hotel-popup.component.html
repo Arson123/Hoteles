@@ -10,6 +10,14 @@
     </mat-form-field>
 
     <mat-form-field appearance="fill">
+      <mat-label>Ubicacion del Hotel</mat-label>
+      <input matInput formControlName="ubication" />
+      <mat-error *ngIf="hotelForm.get('ubication')?.invalid"
+        >Campo obligatorio</mat-error
+      >
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
       <mat-label>Habilitado</mat-label>
       <mat-select formControlName="enabled">
         <mat-option [value]="true">Sí</mat-option>

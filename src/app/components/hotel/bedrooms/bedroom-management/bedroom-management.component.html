@@ -23,9 +23,9 @@
 
 <mat-table [dataSource]="dataSource">
   <!-- Habitacion Column -->
-  <ng-container matColumnDef="ability">
-    <mat-header-cell *matHeaderCellDef>Cantidad de personas</mat-header-cell>
-    <mat-cell *matCellDef="let room">{{ room.ability }}</mat-cell>
+  <ng-container matColumnDef="name">
+    <mat-header-cell *matHeaderCellDef>Nombre Habitacion</mat-header-cell>
+    <mat-cell *matCellDef="let room">{{ room.name }}</mat-cell>
   </ng-container>
 
   <!-- Habilitado Column -->
@@ -39,7 +39,9 @@
   <!-- Creado Column -->
   <ng-container matColumnDef="reserved">
     <mat-header-cell *matHeaderCellDef>Reservado</mat-header-cell>
-    <mat-cell *matCellDef="let room">{{ room.reserved }}</mat-cell>
+    <mat-cell *matCellDef="let room">{{
+      room.reserved ? "Sí" : "No"
+    }}</mat-cell>
   </ng-container>
 
   <!-- cantidad personas Column -->

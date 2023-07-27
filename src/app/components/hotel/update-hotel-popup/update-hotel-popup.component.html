@@ -7,10 +7,15 @@
     </mat-form-field>
 
     <mat-form-field appearance="fill">
+      <mat-label>Ubicacion del Hotel</mat-label>
+      <input matInput formControlName="ubication" required />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
       <mat-label>Habilitado</mat-label>
       <mat-select formControlName="enabled" required>
-        <mat-option value="true">Sí</mat-option>
-        <mat-option value="false">No</mat-option>
+        <mat-option [value]="true">Sí</mat-option>
+        <mat-option [value]="false">No</mat-option>
       </mat-select>
     </mat-form-field>
 

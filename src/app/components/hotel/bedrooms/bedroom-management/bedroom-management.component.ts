@@ -16,7 +16,7 @@ import { UpdateBedroomPopupComponent } from '../update-bedroom-popup/update-bedr
 })
 export class BedroomManagementComponent {
   displayedColumns: string[] = [
-    'ability',
+    'name',
     'enabled',
     'reserved',
     'amount',
@@ -98,19 +98,29 @@ export class BedroomManagementComponent {
         this.dataSource.data.push(createdRoom);
         this.dataSource.data = this.dataSource.data.slice();
         this.dialog.closeAll();
+        Swal.fire('Creado correctamente', '', 'success');
       });
   }
 
   openCreateRoomDialog() {
-    const dialogRef = this.dialog.open(CreateBedroomPopupComponent, {
-      width: '45%',
-    });
+    if (this.selectedHotelId) {
+      const dialogRef = this.dialog.open(CreateBedroomPopupComponent, {
+        width: '45%',
+      });
 
-    dialogRef.afterClosed().subscribe((result: any) => {
-      if (result) {
-        this.createRoom(result);
-      }
-    });
+      dialogRef.afterClosed().subscribe((result: any) => {
+        if (result) {
+          this.createRoom(result);
+        }
+      });
+    } else {
+      Swal.fire({
+        title: 'No disponible',
+        text: `Tienes que seleccionar un hotel para crear una habitacion`,
+        icon: 'warning',
+        confirmButtonColor: '#38d39f',
+      });
+    }
   }
 
   editHotel(hotel: Hotel) {
@@ -144,6 +154,8 @@ export class BedroomManagementComponent {
           this.dataSource.data[index] = updatedRoom;
           this.dataSource.data = this.dataSource.data.slice();
         }
+        this.getBedrooms();
+        Swal.fire('Actualizado correctamente', '', 'success');
       });
   }
 }

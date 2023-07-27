@@ -19,6 +19,12 @@
     <mat-cell *matCellDef="let hotel">{{ hotel.name }}</mat-cell>
   </ng-container>
 
+  <!-- Ubicaicon del Hotel Column -->
+  <ng-container matColumnDef="ubication">
+    <mat-header-cell *matHeaderCellDef>Ubicacion del Hotel</mat-header-cell>
+    <mat-cell *matCellDef="let hotel">{{ hotel.ubication }}</mat-cell>
+  </ng-container>
+
   <!-- Habilitado Column -->
   <ng-container matColumnDef="enabled">
     <mat-header-cell *matHeaderCellDef>Habilitado</mat-header-cell>

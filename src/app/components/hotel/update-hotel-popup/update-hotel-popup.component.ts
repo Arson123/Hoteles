@@ -19,6 +19,7 @@ export class UpdateHotelPopupComponent implements OnInit {
     this.hotelForm = this.formBuilder.group({
       id: [data.id, Validators.required],
       name: [data.name, Validators.required],
+      ubication: [data.ubication, Validators.required],
       enabled: [data.enabled, Validators.required],
       createdAt: [data.createdAt, Validators.required],
       bedrooms: [data.bedrooms],

@@ -18,6 +18,7 @@ export class CreateHotelPopupComponent implements OnInit {
   ) {
     this.hotelForm = this.formBuilder.group({
       name: ['', Validators.required],
+      ubication: ['', Validators.required],
       enabled: [true, Validators.required],
       createdAt: [new Date(), Validators.required],
       bedrooms: [[]],
